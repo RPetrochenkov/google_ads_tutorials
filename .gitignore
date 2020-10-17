@@ -1,3 +1,5 @@
 /creds
 /venv
 /src/creds
+.idea
+/.idea
