@@ -1,12 +1,11 @@
-# Import initialized client
-from src import gads_client
-
+from src import gads_client, config
+from src.models.utils import choose_account_id
 
 import sys
 from google.ads.google_ads.errors import GoogleAdsException
 
-# Put an account id to download stats from. Note: not MCC.
-CUSTOMER_ID = "7036865393"
+# Put an account id to download stats from. Note: not MCC, no dash lines
+CUSTOMER_ID = ""
 
 
 def main(client, customer_id):
@@ -74,9 +73,6 @@ def main(client, customer_id):
         sys.exit(1)
 
 
-def _micros_to_currency(micros):
-    return micros / 1000000.0
-
-
 if __name__ == "__main__":
-    main(gads_client, CUSTOMER_ID)
+    id_to_load = choose_account_id(CUSTOMER_ID, config.get("test_account_id", None))
+    main(gads_client, id_to_load)
