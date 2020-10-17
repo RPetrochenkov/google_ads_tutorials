@@ -1,9 +1,12 @@
+# Import initialized client
 from src import gads_client
 
-import argparse
+
 import sys
-from google.ads.google_ads.client import GoogleAdsClient
 from google.ads.google_ads.errors import GoogleAdsException
+
+# Put an account id to download stats from. Note: not MCC.
+CUSTOMER_ID = "7036865393"
 
 
 def main(client, customer_id):
@@ -76,4 +79,4 @@ def _micros_to_currency(micros):
 
 
 if __name__ == "__main__":
-    main(gads_client, "7036865393")
+    main(gads_client, CUSTOMER_ID)
