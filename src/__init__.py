@@ -1,4 +1,5 @@
 import os
+import json
 
 # my local directory is right now
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -9,6 +10,8 @@ creds = {"google_ads": dir_path + "/creds/googleads.yaml"}
 
 if not os.path.isfile(creds["google_ads"]):
     raise FileExistsError("File doesn't exists. Please create folder src/creds and put googleads.yaml file there. ")
+
+resources = {"config": dir_path + "/config/config.json"}
 
 
 # This logging allows to see additional information on debugging
@@ -21,4 +24,6 @@ logging.getLogger('google.ads.google_ads.client').setLevel(logging.INFO)
 from google.ads.google_ads.client import GoogleAdsClient
 gads_client = GoogleAdsClient.load_from_storage(creds["google_ads"])
 
+# Initialize all global configurations
+config = json.load(open(resources["config"], "r"))
 
