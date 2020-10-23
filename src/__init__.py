@@ -2,7 +2,9 @@ import os
 import json
 
 # my local directory is right now
-dir_path = os.path.dirname(os.path.realpath(__file__))
+src_path = os.path.dirname(os.path.realpath(__file__))
+
+dir_path = os.path.join(src_path, '..')
 
 # credentials dictonary
 creds = {"google_ads": dir_path + "/creds/googleads.yaml"}
